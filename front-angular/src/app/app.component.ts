@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front-angular';
+  showForm = false;
+
+  showLogForm(){
+    return this.showForm = !this.showForm;
+  }
 }
