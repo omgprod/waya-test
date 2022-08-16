@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin':'*',
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -8,6 +13,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers() {
-    return this.httpClient.get(this.url);
+    return this.httpClient.get(this.url, httpOptions);
   }
 }

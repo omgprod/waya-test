@@ -1,0 +1,33 @@
+<p>login works!</p>
+<div style="display: flex; justify-content: center; margin-top: 100px">
+  <form
+    class="form-signin"
+    [formGroup]="loginForm"
+    (ngSubmit)="loginUser()"
+  >
+  <mat-card style=" display: flex; flex-direction: column; min-width: 300px">
+    <mat-card-title style="text-align: center; margin: 10px">Se connecter</mat-card-title>
+      <mat-form-field class="example-full-width" appearance="fill" style="margin-top:30px">
+        <mat-label>E-mail</mat-label>
+        <input
+          class="form-control"
+          formControlName="email"
+          matInput>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+      <input
+        class="form-control"
+        formControlName="password"
+        type="password"
+        matInput>
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+    <mat-card-actions align="end">
+      <button style="margin: 10px" mat-flat-button color="primary" (click)="navigateToRegisterForm()">CRÉER UN COMPTE</button>
+      <button style="margin: 10px" mat-flat-button color="primary" type="submit">VALIDER</button>
+    </mat-card-actions>
+  </mat-card>
+  </form>
+</div>
