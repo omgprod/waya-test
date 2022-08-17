@@ -1,0 +1,17 @@
+App\Entity\Users:
+    users_1:
+        firstName: <name()>
+        lastName: <name()>
+        username: <name()>
+        password: <hashPass()>
+        email: "admin@admin.fr"
+        phone: <phoneNumber()>
+        #roles: "randomElement(['ROLE_USER', 'ROLE_ADMIN'])"
+    users_{2..10}:
+        firstName: <name()>
+        lastName: <name()>
+        username: <name()>
+        password: "password"
+        email: <email()>
+        phone: <phoneNumber()>
+        #roles: "randomElement(['ROLE_USER', 'ROLE_ADMIN'])"

@@ -11,6 +11,7 @@
         <input
           class="form-control"
           formControlName="username"
+          pattern="^[a-zA-Z]*"
           matInput>
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
@@ -19,6 +20,7 @@
         <input
           class="form-control"
           formControlName="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           matInput>
         <mat-icon matSuffix>mail</mat-icon>
       </mat-form-field>
@@ -27,12 +29,14 @@
         <input matInput
                class="form-control"
                formControlName="password"
+               pattern="^[a-zA-Z]*"
                type="password">
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Confirmation mot de passe</mat-label>
         <input matInput
+               pattern="^[a-zA-Z]*"
                type="password">
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
@@ -56,13 +60,14 @@
         <mat-label>Téléphone</mat-label>
         <input
           class="form-control"
+          pattern="^[0-9]*"
           formControlName="phone"
           matInput>
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
       <mat-card-actions align="end">
-        <button style="margin: 10px" mat-flat-button color="primary" mat-button (click)="navigateToLoginForm()">SE CONNECTER</button>
         <button style="margin: 10px" mat-flat-button color="primary" mat-button type="submit">VALIDER</button>
+        <button style="margin: 10px" mat-flat-button color="primary" mat-button (click)="navigateToLoginForm()">DÉJÀ UN COMPTE ?</button>
       </mat-card-actions>
     </mat-card>
   </form>

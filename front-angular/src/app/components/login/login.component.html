@@ -12,6 +12,7 @@
         <input
           class="form-control"
           formControlName="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           matInput>
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
@@ -20,13 +21,14 @@
       <input
         class="form-control"
         formControlName="password"
+        pattern="^[a-zA-Z]*"
         type="password"
         matInput>
       <mat-icon matSuffix>lock</mat-icon>
     </mat-form-field>
     <mat-card-actions align="end">
+      <button style="margin: 10px" mat-flat-button color="primary" type="submit">SE CONNECTER</button>
       <button style="margin: 10px" mat-flat-button color="primary" (click)="navigateToRegisterForm()">CRÉER UN COMPTE</button>
-      <button style="margin: 10px" mat-flat-button color="primary" type="submit">VALIDER</button>
     </mat-card-actions>
   </mat-card>
   </form>

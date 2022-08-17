@@ -54,8 +54,8 @@ class UserController extends AbstractController
             "password"
         );
         $user->setUsername('admin');
-        $user->setFirstName('admin');
-        $user->setLastName('admin');
+        $user->setFirstName('Jean');
+        $user->setLastName('Test');
         $user->setPassword($hashedPassword);
         $user->setEmail('admin@admin.fr');
         $user->setPhone('0613072006');

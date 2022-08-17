@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +18,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { AccountComponent } from './components/account/account.component';
 import { UserComponent } from './components/user/user.component';
+import { HotToastModule } from '@ngneat/hot-toast';
+import {MatTableModule} from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -31,14 +35,22 @@ import { UserComponent } from './components/user/user.component';
     UserComponent
   ],
   imports: [
-    MatIconModule,
-    HttpClientModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatTableModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    BrowserModule,
+    MatIconModule,
+
     AppRoutingModule,
+    HttpClientModule,
+    HotToastModule.forRoot(),
+
+    BrowserModule,
     BrowserAnimationsModule,
+
     ReactiveFormsModule,
     FormsModule
   ],

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {catchError, map, Observable, throwError} from "rxjs";
+import { HotToastService } from '@ngneat/hot-toast';
 
 export class User {
   _id!: String;
@@ -20,7 +21,27 @@ export class AuthService {
   endpoint: string = 'https://localhost:4443/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
-  constructor(private http: HttpClient, public router: Router) {
+  constructor(
+    private toast: HotToastService,
+    private http: HttpClient,
+    public router: Router,
+  ) {
+  }
+  notify(type:string, message: string){
+    switch (type) {
+      case "loading":
+        return this.toast.loading(message);
+      case "success":
+        return this.toast.success(message);
+      case "warning":
+        return this.toast.warning(message);
+      case "error":
+        return this.toast.error(message);
+      case "info":
+        return this.toast.info(message);
+      default:
+        return this.toast.show(message);
+    }
   }
   signUp(user: User): Observable<any> {
     let api = `${this.endpoint}/register`;
@@ -28,19 +49,28 @@ export class AuthService {
   }
   signIn(email: String, password: String) {
     console.log(email, password)
-    return this.http
-      .post<any>(`${this.endpoint}/login_check`, { email, password })
-      .subscribe((res: any) => {
-        //console.log(res.token)
-        localStorage.setItem('access_token', res.payload.token);
-        localStorage.setItem('user', JSON.stringify(res.user));
-        localStorage.setItem('user', JSON.stringify(res.user));
-        this.currentUser = res.user;
-        this.getUserProfile(res.user.id).subscribe((res) => {
-          //console.log(res)
+    try {
+      return this.http
+        .post<any>(`${this.endpoint}/login_check`, { email, password })
+        .subscribe((res: any) => {
+          console.log(res)
+          console.log(res)
+          console.log(res)
+          try {
+            localStorage.setItem('access_token', res.payload.token);
+            localStorage.setItem('user', JSON.stringify(res.user));
+            localStorage.setItem('user', JSON.stringify(res.user));
+            this.currentUser = res.user;
+            this.router.navigate(['mon-compte']);
+            return this.notify("success", "Vous êtes connecté")
+          }
+          catch (e) {
+            return this.notify("error", "Une erreur est survenue")
+          }
         });
-        this.router.navigate(['mon-compte']);
-      });
+    } catch (e) {
+      return this.notify("error", "Une erreur est survenue")
+    }
   }
   getToken() {
     return localStorage.getItem('access_token');

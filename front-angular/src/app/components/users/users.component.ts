@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../shared/auth.service";
 import {UserService} from "../../services/user.service";
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 type Person = {
   id: string;
@@ -19,6 +21,9 @@ type Person = {
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  displayedColumns: string[] = ['actions', 'id', 'Email', 'FirstName', 'LastName', 'Phone'];
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
   users: Array<Person>;
   constructor(
     public router:Router,
