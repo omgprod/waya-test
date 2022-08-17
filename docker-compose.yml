@@ -26,7 +26,7 @@ services:
 
   caddy:
     build:
-      context: ./symfony-docker/
+      context: .
       target: app_caddy
     depends_on:
       - php

@@ -17,6 +17,8 @@ import { RegisterComponent } from './components/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { AccountComponent } from './components/account/account.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     UsersComponent,
     LoginComponent,
     RegisterComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AccountComponent,
+    UserComponent
   ],
   imports: [
     MatIconModule,

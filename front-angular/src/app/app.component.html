@@ -228,7 +228,20 @@
     style="margin-left: 50px"
   />
   <span style="position: absolute; top: 50; left: 90px">TEST</span>
-  <div class="spacer"></div>
+  <div
+    style="margin-left: 20px"
+    class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+    <nav class="my-2 my-md-0 mr-md-3">
+      <button mat-button color="secondary" (click)="logout()" *ngIf="this.authService.isLoggedIn" type="button" class="btn btn-danger">Me déconnecter</button>
+      <a *ngIf="this.authService.isLoggedIn === true" class="p-2 text-dark"  routerLinkActive="active" routerLink="/mon-compte">
+        <button mat-button color="secondary" *ngIf="this.authService.isLoggedIn" type="button" class="btn btn-danger" style="color: white">Mon compte</button>
+      </a>
+      <a *ngIf="this.authService.isLoggedIn === true" class="p-2 text-white" routerLinkActive="active"  routerLinkActive="active" routerLink="/mon-compte" style="color: white">
+      <button mat-button color="secondary" *ngIf="this.authService.isLoggedIn" type="button" class="btn btn-danger">Liste Utilisateurs</button>
+      </a>
+
+    </nav>
+  </div>
   <button mat-button color="secondary" (click)="navigateToLoginForm()"></button>
   <button mat-button color="secondary" (click)="navigateToRegisterForm()"></button>
 </div>

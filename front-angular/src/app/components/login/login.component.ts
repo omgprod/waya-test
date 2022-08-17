@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
   }
   loginUser() {
     const user = this.loginForm.controls
-    console.log(user['email'].value);
-    console.log(user['password'].value);
-    this.authService.signIn(user['email'].value, user['password'].value);
+    return this.authService.signIn(user['email'].value, user['password'].value);
   }
   navigateToRegisterForm(){
     this.router.navigate(['nouveau-compte']).then(r => console.log(r))

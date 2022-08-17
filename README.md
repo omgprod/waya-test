@@ -23,3 +23,6 @@ Start project and get logs return in console
 
 Start project daemon
 - HTTP_PORT=8000 HTTPS_PORT=4443 docker compose up -d
+
+
+- docker build -t bharathirajatut/angular-app:latest .

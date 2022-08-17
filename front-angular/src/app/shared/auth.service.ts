@@ -27,14 +27,18 @@ export class AuthService {
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
   signIn(email: String, password: String) {
+    console.log(email, password)
     return this.http
       .post<any>(`${this.endpoint}/login_check`, { email, password })
       .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token);
-        this.getUserProfile(res._id).subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['user-profile/' + res.msg._id]);
+        console.log(res.token)
+        localStorage.setItem('access_token', res.payload.token);
+        localStorage.setItem('user', JSON.stringify(res.user));
+        this.currentUser = res.user;
+        this.getUserProfile(res.user.id).subscribe((res) => {
+          console.log(res)
         });
+        this.router.navigate(['mon-compte']);
       });
   }
   getToken() {
@@ -42,10 +46,11 @@ export class AuthService {
   }
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
+    console.log(authToken)
     return authToken !== null;
   }
   getUserProfile(id: any): Observable<any> {
-    let api = `${this.endpoint}/user/${id}`;
+    let api = `${this.endpoint}/users/${id}`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
@@ -55,7 +60,8 @@ export class AuthService {
   }
   doLogout() {
     localStorage.removeItem('access_token');
-    return this.router.navigate(['log-in']);
+    localStorage.removeItem('user');
+    return this.router.navigate(['se-connecter']);
   }
   handleError(error: HttpErrorResponse) {
     let msg = '';

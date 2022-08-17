@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 import { HttpClient } from '@angular/common/http';
 import {Router} from "@angular/router";
+import {AuthService} from "./shared/auth.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit{
   constructor(
     public router:Router,
     private http:HttpClient,
+    public authService: AuthService,
     private service:UserService) {
   }
   ngOnInit() {
@@ -32,6 +34,10 @@ export class AppComponent implements OnInit{
   navigateToRegisterForm(){
     this.router.navigate(['nouveau-compte']).then(r => console.log(r))
   }
+  logout() {
+    this.authService.doLogout();
+  }
+
   showLogForm(){
     console.log(this.router.url)
     return this.router.url;
