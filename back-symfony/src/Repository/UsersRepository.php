@@ -41,7 +41,7 @@ class UsersRepository extends ServiceEntityRepository implements UserLoaderInter
     /**
      * @throws NonUniqueResultException
      */
-    public function loadUserByIdentifier(string $identifier): UserInterface
+    public function loadUserByIdentifier(string $identifier): UserInterface | NULL
     {
         $entityManager = $this->getEntityManager();
 

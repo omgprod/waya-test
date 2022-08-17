@@ -7,3 +7,4 @@ COPY --chown=node:node package.json package-lock.json ./
 #RUN npm install -g @angular/cli
 RUN npm ci --quiet
 COPY --chown=node:node . .
+EXPOSE 4200

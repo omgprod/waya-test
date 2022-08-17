@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router:Router,
+    private http:HttpClient,
+    public authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
+
+
+
   }
 
 }

@@ -1,1 +1,45 @@
-<p>users works!</p>
+<div class="grid grid-cols-2 md:grid-cols-6">
+  <div *ngFor="let user of users" style="margin-top:200px; display: flex; justify-content:center">
+    <mat-card class="example-card" style="height:340px; width:400px">
+      <mat-card-title-group>
+        <mat-card-title>{{ user.Email }}</mat-card-title>
+        <mat-card-subtitle style="margin-top: 15px">Compte actif</mat-card-subtitle>
+        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" style="border-radius:50px">
+      </mat-card-title-group>
+      <mat-card-content style="display:flex;flex-direction:row">
+        <span style="margin:5px">id : </span>
+        <span style="margin:5px">{{ user.id }}</span>
+        <button mat-button>
+          <mat-icon matSuffix>edit</mat-icon>
+        </button>
+      </mat-card-content>
+      <mat-card-content style="display:flex;flex-direction:row">
+        <span style="margin:5px">E-mail : </span>
+        <span style="margin:5px">{{ user.Email }}</span>
+        <button mat-button>
+          <mat-icon matSuffix>edit</mat-icon>
+        </button>
+      </mat-card-content>
+      <mat-card-content style="display:flex;flex-direction:row">
+        <span style="margin:5px">Username : </span>
+        <span style="margin:5px" >{{ user.Email }}</span>
+        <button mat-button>
+          <mat-icon matSuffix>edit</mat-icon>
+        </button>
+      </mat-card-content>
+      <mat-card-content style="display:flex;flex-direction:row">
+        <span style="margin:5px">Téléphone : </span>
+        <span style="margin:5px">{{ user.Phone }}</span>
+        <button mat-button>
+          <mat-icon matSuffix>edit</mat-icon>
+        </button>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button style="margin:5px"
+                [routerLink]="['/utilisateur', user.id]"
+                mat-flat-button color="primary" >Voir la fiche utilisateur</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

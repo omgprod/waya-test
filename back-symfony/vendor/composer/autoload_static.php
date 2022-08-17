@@ -474,6 +474,7 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
     public static $classMap = array (
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Controller/UserController.php',
         'App\\Entity\\Users' => __DIR__ . '/../..' . '/src/Entity/Users.php',
+        'App\\EventListener\\AuthenticationSuccessListener' => __DIR__ . '/../..' . '/src/EventListener/AuthenticationSuccessListener.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/src/Repository/UsersRepository.php',
         'Behat\\Transliterator\\SyncTool' => __DIR__ . '/..' . '/behat/transliterator/src/Behat/Transliterator/SyncTool.php',

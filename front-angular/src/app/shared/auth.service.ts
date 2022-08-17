@@ -31,12 +31,13 @@ export class AuthService {
     return this.http
       .post<any>(`${this.endpoint}/login_check`, { email, password })
       .subscribe((res: any) => {
-        console.log(res.token)
+        //console.log(res.token)
         localStorage.setItem('access_token', res.payload.token);
+        localStorage.setItem('user', JSON.stringify(res.user));
         localStorage.setItem('user', JSON.stringify(res.user));
         this.currentUser = res.user;
         this.getUserProfile(res.user.id).subscribe((res) => {
-          console.log(res)
+          //console.log(res)
         });
         this.router.navigate(['mon-compte']);
       });
@@ -46,7 +47,7 @@ export class AuthService {
   }
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
-    console.log(authToken)
+    //console.log(authToken)
     return authToken !== null;
   }
   getUserProfile(id: any): Observable<any> {

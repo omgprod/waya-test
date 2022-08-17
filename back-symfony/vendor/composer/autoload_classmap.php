@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Controller\\UserController' => $baseDir . '/src/Controller/UserController.php',
     'App\\Entity\\Users' => $baseDir . '/src/Entity/Users.php',
+    'App\\EventListener\\AuthenticationSuccessListener' => $baseDir . '/src/EventListener/AuthenticationSuccessListener.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'App\\Repository\\UsersRepository' => $baseDir . '/src/Repository/UsersRepository.php',
     'Behat\\Transliterator\\SyncTool' => $vendorDir . '/behat/transliterator/src/Behat/Transliterator/SyncTool.php',
