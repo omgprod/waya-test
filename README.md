@@ -39,7 +39,12 @@ docker compose exec php bin/console hautelook:fixtures:load
 - [x] Mise en place Auth, Interceptors, Guard, JWT
 - [x] Récupérations de données, mise en forme TS
 - [ ] Mise en place de toutes les pages et des données
-- [ ] Get Deep on Angular Materials Components 
+- [ ] Login
+- [x] Register
+- [x] Logout
+- [ ] Observable
+- [ ] Store NGRX
+- [x] Get Deep on Angular Materials Components 
 - [ ] UI & SASS
 - [ ] Vérification sécurité & optimization code
 
@@ -47,10 +52,12 @@ docker compose exec php bin/console hautelook:fixtures:load
 - [ ] Documentations
 - [x] Récupération de Symfony Flex
 - [x] Ajouts deps : FOSRest, Doctrine, lexik_jwt, nelmio_alice, nelmio_cors 
-- [x] Entités
-- [x] Controller
-- [x] Routes
+- [x] Entités Users
+- [x] Controller REST
+- [x] JWT
+- [x] Routes sécurisées
 - [x] Fixtures
+- [ ] Validation, Sécurisations
 - [ ] Security.yaml
 - [ ] Vérification sécurité & optimization code
 - [ ] Test de l'ensemble
