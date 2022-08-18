@@ -19,11 +19,11 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' =>
+        'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
         ),
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Runtime\\Symfony\\Component\\' => 34,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -70,7 +70,7 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
             'Stof\\DoctrineExtensionsBundle\\' => 30,
             'StellaMaris\\Clock\\' => 18,
         ),
-        'P' =>
+        'P' => 
         array (
             'Psr\\Log\\' => 8,
             'Psr\\EventDispatcher\\' => 20,
@@ -80,44 +80,44 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
             'PhpParser\\' => 10,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
-        'N' =>
+        'N' => 
         array (
             'Nelmio\\CorsBundle\\' => 18,
             'Nelmio\\Alice\\' => 13,
             'Negotiation\\' => 12,
             'Namshi\\JOSE\\' => 12,
         ),
-        'M' =>
+        'M' => 
         array (
             'Metadata\\' => 9,
         ),
-        'L' =>
+        'L' => 
         array (
             'Lexik\\Bundle\\JWTAuthenticationBundle\\' => 37,
             'Lcobucci\\JWT\\' => 13,
             'Lcobucci\\Clock\\' => 15,
             'Laminas\\Code\\' => 13,
         ),
-        'J' =>
+        'J' => 
         array (
             'JMS\\Serializer\\' => 15,
             'JMS\\SerializerBundle\\' => 21,
         ),
-        'H' =>
+        'H' => 
         array (
             'Hautelook\\AliceBundle\\' => 22,
         ),
-        'G' =>
+        'G' => 
         array (
             'Gedmo\\' => 6,
         ),
-        'F' =>
+        'F' => 
         array (
             'Fidry\\AliceDataFixtures\\' => 24,
             'Faker\\' => 6,
             'FOS\\RestBundle\\' => 15,
         ),
-        'D' =>
+        'D' => 
         array (
             'Doctrine\\SqlFormatter\\' => 22,
             'Doctrine\\Persistence\\' => 21,
@@ -128,7 +128,7 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
             'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
-            'Doctrine\\Common\\Faker\\' => 29,
+            'Doctrine\\Common\\DataFixtures\\' => 29,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
@@ -137,11 +137,11 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
         ),
-        'B' =>
+        'B' => 
         array (
             'Behat\\Transliterator\\' => 21,
         ),
-        'A' =>
+        'A' => 
         array (
             'App\\Tests\\' => 10,
             'App\\' => 4,
@@ -149,365 +149,365 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
     );
 
     public static $prefixDirsPsr4 = array (
-        'Webmozart\\Assert\\' =>
+        'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Symfony\\Runtime\\Symfony\\Component\\' =>
+        'Symfony\\Runtime\\Symfony\\Component\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/runtime/Internal',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' =>
+        'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Intl\\Normalizer\\' =>
+        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
         ),
-        'Symfony\\Polyfill\\Intl\\Grapheme\\' =>
+        'Symfony\\Polyfill\\Intl\\Grapheme\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme',
         ),
-        'Symfony\\Flex\\' =>
+        'Symfony\\Flex\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/flex/src',
         ),
-        'Symfony\\Contracts\\Translation\\' =>
+        'Symfony\\Contracts\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation-contracts',
         ),
-        'Symfony\\Contracts\\Service\\' =>
+        'Symfony\\Contracts\\Service\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
-        'Symfony\\Contracts\\HttpClient\\' =>
+        'Symfony\\Contracts\\HttpClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-client-contracts',
         ),
-        'Symfony\\Contracts\\EventDispatcher\\' =>
+        'Symfony\\Contracts\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
         ),
-        'Symfony\\Contracts\\Cache\\' =>
+        'Symfony\\Contracts\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/cache-contracts',
         ),
-        'Symfony\\Component\\Yaml\\' =>
+        'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Symfony\\Component\\VarExporter\\' =>
+        'Symfony\\Component\\VarExporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-exporter',
         ),
-        'Symfony\\Component\\VarDumper\\' =>
+        'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Symfony\\Component\\Validator\\' =>
+        'Symfony\\Component\\Validator\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/validator',
         ),
-        'Symfony\\Component\\String\\' =>
+        'Symfony\\Component\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
         ),
-        'Symfony\\Component\\Stopwatch\\' =>
+        'Symfony\\Component\\Stopwatch\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/stopwatch',
         ),
-        'Symfony\\Component\\Serializer\\' =>
+        'Symfony\\Component\\Serializer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/serializer',
         ),
-        'Symfony\\Component\\Security\\Http\\' =>
+        'Symfony\\Component\\Security\\Http\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-http',
         ),
-        'Symfony\\Component\\Security\\Csrf\\' =>
+        'Symfony\\Component\\Security\\Csrf\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-csrf',
         ),
-        'Symfony\\Component\\Security\\Core\\' =>
+        'Symfony\\Component\\Security\\Core\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-core',
         ),
-        'Symfony\\Component\\Runtime\\' =>
+        'Symfony\\Component\\Runtime\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/runtime',
         ),
-        'Symfony\\Component\\Routing\\' =>
+        'Symfony\\Component\\Routing\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
         ),
-        'Symfony\\Component\\PropertyInfo\\' =>
+        'Symfony\\Component\\PropertyInfo\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/property-info',
         ),
-        'Symfony\\Component\\PropertyAccess\\' =>
+        'Symfony\\Component\\PropertyAccess\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/property-access',
         ),
-        'Symfony\\Component\\PasswordHasher\\' =>
+        'Symfony\\Component\\PasswordHasher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/password-hasher',
         ),
-        'Symfony\\Component\\HttpKernel\\' =>
+        'Symfony\\Component\\HttpKernel\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-kernel',
         ),
-        'Symfony\\Component\\HttpFoundation\\' =>
+        'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
-        'Symfony\\Component\\HttpClient\\' =>
+        'Symfony\\Component\\HttpClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-client',
         ),
-        'Symfony\\Component\\Finder\\' =>
+        'Symfony\\Component\\Finder\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
         ),
-        'Symfony\\Component\\Filesystem\\' =>
+        'Symfony\\Component\\Filesystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/filesystem',
         ),
-        'Symfony\\Component\\EventDispatcher\\' =>
+        'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\ErrorHandler\\' =>
+        'Symfony\\Component\\ErrorHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/error-handler',
         ),
-        'Symfony\\Component\\Dotenv\\' =>
+        'Symfony\\Component\\Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/dotenv',
         ),
-        'Symfony\\Component\\DependencyInjection\\' =>
+        'Symfony\\Component\\DependencyInjection\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/dependency-injection',
         ),
-        'Symfony\\Component\\Console\\' =>
+        'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Symfony\\Component\\Config\\' =>
+        'Symfony\\Component\\Config\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
         ),
-        'Symfony\\Component\\Cache\\' =>
+        'Symfony\\Component\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
         ),
-        'Symfony\\Bundle\\SecurityBundle\\' =>
+        'Symfony\\Bundle\\SecurityBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-bundle',
         ),
-        'Symfony\\Bundle\\MakerBundle\\' =>
+        'Symfony\\Bundle\\MakerBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/maker-bundle/src',
         ),
-        'Symfony\\Bundle\\FrameworkBundle\\' =>
+        'Symfony\\Bundle\\FrameworkBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/framework-bundle',
         ),
-        'Symfony\\Bridge\\ProxyManager\\' =>
+        'Symfony\\Bridge\\ProxyManager\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/proxy-manager-bridge',
         ),
-        'Symfony\\Bridge\\Doctrine\\' =>
+        'Symfony\\Bridge\\Doctrine\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
-        'Stof\\DoctrineExtensionsBundle\\' =>
+        'Stof\\DoctrineExtensionsBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle/src',
         ),
-        'StellaMaris\\Clock\\' =>
+        'StellaMaris\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/stella-maris/clock/src',
         ),
-        'Psr\\Log\\' =>
+        'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'Psr\\EventDispatcher\\' =>
+        'Psr\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/event-dispatcher/src',
         ),
-        'Psr\\Container\\' =>
+        'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'Psr\\Cache\\' =>
+        'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'ProxyManager\\' =>
+        'ProxyManager\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofphp/proxy-manager-lts/src/ProxyManager',
         ),
-        'PhpParser\\' =>
+        'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'PHPStan\\PhpDocParser\\' =>
+        'PHPStan\\PhpDocParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
         ),
-        'Nelmio\\CorsBundle\\' =>
+        'Nelmio\\CorsBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
         ),
-        'Nelmio\\Alice\\' =>
+        'Nelmio\\Alice\\' => 
         array (
             0 => __DIR__ . '/..' . '/nelmio/alice/src',
         ),
-        'Negotiation\\' =>
+        'Negotiation\\' => 
         array (
             0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
         ),
-        'Namshi\\JOSE\\' =>
+        'Namshi\\JOSE\\' => 
         array (
             0 => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE',
         ),
-        'Metadata\\' =>
+        'Metadata\\' => 
         array (
             0 => __DIR__ . '/..' . '/jms/metadata/src',
         ),
-        'Lexik\\Bundle\\JWTAuthenticationBundle\\' =>
+        'Lexik\\Bundle\\JWTAuthenticationBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/lexik/jwt-authentication-bundle',
         ),
-        'Lcobucci\\JWT\\' =>
+        'Lcobucci\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
-        'Lcobucci\\Clock\\' =>
+        'Lcobucci\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/lcobucci/clock/src',
         ),
-        'Laminas\\Code\\' =>
+        'Laminas\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
         ),
-        'JMS\\Serializer\\' =>
+        'JMS\\Serializer\\' => 
         array (
             0 => __DIR__ . '/..' . '/jms/serializer/src',
         ),
-        'JMS\\SerializerBundle\\' =>
+        'JMS\\SerializerBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/jms/serializer-bundle',
         ),
-        'Hautelook\\AliceBundle\\' =>
+        'Hautelook\\AliceBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/hautelook/alice-bundle/src',
         ),
-        'Gedmo\\' =>
+        'Gedmo\\' => 
         array (
             0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/src',
         ),
-        'Fidry\\AliceDataFixtures\\' =>
+        'Fidry\\AliceDataFixtures\\' => 
         array (
             0 => __DIR__ . '/..' . '/theofidry/alice-data-fixtures/src',
         ),
-        'Faker\\' =>
+        'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
-        'FOS\\RestBundle\\' =>
+        'FOS\\RestBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
         ),
-        'Doctrine\\SqlFormatter\\' =>
+        'Doctrine\\SqlFormatter\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/sql-formatter/src',
         ),
-        'Doctrine\\Persistence\\' =>
+        'Doctrine\\Persistence\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence',
         ),
-        'Doctrine\\ORM\\' =>
+        'Doctrine\\ORM\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM',
         ),
-        'Doctrine\\Migrations\\' =>
+        'Doctrine\\Migrations\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/migrations/lib/Doctrine/Migrations',
         ),
-        'Doctrine\\Instantiator\\' =>
+        'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
-        'Doctrine\\Inflector\\' =>
+        'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
         ),
-        'Doctrine\\Deprecations\\' =>
+        'Doctrine\\Deprecations\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
         ),
-        'Doctrine\\DBAL\\' =>
+        'Doctrine\\DBAL\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/dbal/src',
         ),
-        'Doctrine\\Common\\Lexer\\' =>
+        'Doctrine\\Common\\Lexer\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
         ),
-        'Doctrine\\Common\\Faker\\' =>
+        'Doctrine\\Common\\DataFixtures\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures',
         ),
-        'Doctrine\\Common\\Collections\\' =>
+        'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
         ),
-        'Doctrine\\Common\\Cache\\' =>
+        'Doctrine\\Common\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
-        'Doctrine\\Common\\Annotations\\' =>
+        'Doctrine\\Common\\Annotations\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
         ),
-        'Doctrine\\Common\\' =>
+        'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
             1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
         ),
-        'Doctrine\\Bundle\\MigrationsBundle\\' =>
+        'Doctrine\\Bundle\\MigrationsBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle',
         ),
-        'Doctrine\\Bundle\\DoctrineBundle\\' =>
+        'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
-        'DeepCopy\\' =>
+        'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Behat\\Transliterator\\' =>
+        'Behat\\Transliterator\\' => 
         array (
             0 => __DIR__ . '/..' . '/behat/transliterator/src/Behat/Transliterator',
         ),
-        'App\\Tests\\' =>
+        'App\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'App\\' =>
+        'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'J' =>
+        'J' => 
         array (
-            'JsonpCallbackValidator' =>
+            'JsonpCallbackValidator' => 
             array (
                 0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
             ),
@@ -5862,7 +5862,7 @@ class ComposerStaticInit5013763ffd298c1504f8ce90cf81e840
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
-        'ï¿½' => __DIR__ . '/..' . '/symfony/cache/Traits/ValueWrapper.php',
+        '©' => __DIR__ . '/..' . '/symfony/cache/Traits/ValueWrapper.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

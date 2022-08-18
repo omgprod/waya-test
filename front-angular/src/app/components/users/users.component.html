@@ -75,14 +75,28 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <mat-paginator [length]="100"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]"
+                     aria-label="Select page">
+      </mat-paginator>
+
     </table>
-
   </div>
+<div style="display: flex; justify-content: center; margin-top: 20px ">
+  <mat-paginator [length]="arrayCount"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 aria-label="Select page">
+  </mat-paginator>
 
 </div>
 
 </div>
-<div class="grid grid-cols-2 md:grid-cols-6">
+
+</div>
+<div class="grid grid-cols-2">
   <div *ngFor="let user of users" style="margin-top:200px; display: flex; justify-content:center">
     <mat-card class="example-card" style="height:340px; width:400px">
       <mat-card-title-group>

@@ -11,7 +11,7 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-    App\Faker\Provider\JobProvider: ~
+    #App\Faker\Provider\AppFixtures: ~
 
     app.listener.authentication_success_response:
         class: App\EventListener\AuthenticationSuccessListener

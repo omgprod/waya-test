@@ -23,6 +23,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     UserComponent
   ],
   imports: [
+    MatPaginatorModule,
     MatSlideToggleModule,
     MatTooltipModule,
     MatMenuModule,
