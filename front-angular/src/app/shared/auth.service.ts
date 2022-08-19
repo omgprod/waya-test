@@ -47,38 +47,24 @@ export class AuthService {
     let api = `${this.endpoint}/register`;
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
-  signIn(email: String, password: String) {
-    console.log(email, password)
-    try {
-      return this.http
-        .post<any>(`${this.endpoint}/login_check`, { email, password })
-        .subscribe((res: any) => {
-          console.log(res)
-          console.log(res)
-          console.log(res)
-          try {
-            localStorage.setItem('access_token', res.payload.token);
-            localStorage.setItem('user', JSON.stringify(res.user));
-            localStorage.setItem('user', JSON.stringify(res.user));
-            this.currentUser = res.user;
-            this.router.navigate(['mon-compte']);
-            return this.notify("success", "Vous êtes connecté")
-          }
-          catch (e) {
-            return this.notify("error", "Une erreur est survenue")
-          }
-        });
-    } catch (e) {
-      return this.notify("error", "Une erreur est survenue")
-    }
+  signIn(email: String, password: String): Observable<any> {
+    let api = `${this.endpoint}/login_check`;
+    return this.http.post(api, {email, password}).pipe(catchError(this.handleError));
+  }
+  setUser(user:any) {
+    this.currentUser = user;
+    localStorage.setItem('user', JSON.stringify(user));
+    return this.currentUser;
+  }
+  setToken(token:string) {
+    localStorage.setItem('access_token', token);
+    return this.currentUser;
   }
   getToken() {
     return localStorage.getItem('access_token');
   }
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access_token');
-    //console.log(authToken)
-    return authToken !== null;
+    return this.getToken() !== null;
   }
   getUserProfile(id: any): Observable<any> {
     let api = `${this.endpoint}/users/${id}`;
@@ -94,11 +80,20 @@ export class AuthService {
     localStorage.removeItem('user');
     return this.router.navigate(['se-connecter']);
   }
+  handleError2(error: HttpErrorResponse) {
+    console.log(error)
+  }
   handleError(error: HttpErrorResponse) {
-    let msg = '';
-    if (error.error instanceof ErrorEvent) {
-      msg = error.error.message;
-    } else {
+    console.log(error)
+    let msg: string = '';
+    if (error.error) {
+      if(error.error.status){
+        msg = `Error Code: ${error.error.status}\nMessage: ${error.error.detail}`;
+      } else {
+        msg = `Error Code: ${error.error.code}\nMessage: ${error.error.message}`;
+      }
+    }
+    else {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);

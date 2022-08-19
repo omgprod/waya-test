@@ -24,17 +24,22 @@ export class RegisterComponent implements OnInit {
       password: [''],
     });
   }
-
   ngOnInit(): void {
   }
   navigateToLoginForm(){
     this.router.navigate(['se-connecter']).then(() => null);
   }
   registerUser() {
-    this.authService.signUp(this.signupForm.value).subscribe((res) => {
-      if (res.result) {
-        this.signupForm.reset();
-        this.router.navigate(['se-connecter']).then(r => (console.log(r)));
+    this.authService.signUp(this.signupForm.value).subscribe({
+      next: (res) => {
+        if (res.status === 200) {
+          this.authService.notify("success", res.message)
+          this.signupForm.reset();
+          this.router.navigate(['se-connecter']);
+        }
+    },
+    error: (error) => {
+        this.authService.notify("error", "Une erreur est survenue")
       }
     });
   }

@@ -25,7 +25,17 @@ export class LoginComponent implements OnInit {
   }
   loginUser() {
     const user = this.loginForm.controls
-    return this.authService.signIn(user['email'].value, user['password'].value);
+    return this.authService.signIn(user['email'].value, user['password'].value).subscribe((res:any) => {
+      console.log(res)
+      if(res.payload && res.user){
+        localStorage.setItem('access_token', res.payload.token);
+        this.authService.setUser(res.user);
+        this.authService.notify("success", "Vous êtes connecté")
+        this.router.navigate(['mon-compte']);
+      } else {
+        this.authService.notify("error", "Une erreur est survenue")
+      }
+    });
   }
   navigateToRegisterForm(){
     this.router.navigate(['nouveau-compte']).then(r => console.log(r))

@@ -15,44 +15,38 @@ class RegisterController extends AbstractController
     #[Route('/api/register', name: 'app_register')]
     public function create(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $doctrine ,Request $request): JsonResponse
     {
-        //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        return new JsonResponse([
-            "1" => [$request->get('email')],
-            "11" => [$request->toArray()],
-            /*      "2" => [$request->request->get("phone")],
-                  "3" => [$request->request->get("password")],
-                  "4" => [$request->request->get("username")],*/
-        ]);
+        $req = $request->toArray();
         $entityManager = $doctrine->getManager();
-        $firstname = (string)$request->get->get('firstName');
-        $lastname = (string)$request->request->get('lastName');
-        $email = (string)$request->request->get('email');
-        $password = (string)$request->request->get('password');
-        $phone = (string)$request->request->get('phone');
+        $firstname = (string)$req['firstName'] ?? "";
+        $lastname = (string)$req['lastName'] ?? "";
+        $email = (string)$req['email'] ?? "";
+        $password = (string)$req['password'] ?? "";
+        $phone = (string)$req['phone'] ?? "";
 
-        if (!$email) {
+        if (!$email || !$password) {
             throw $this->createNotFoundException(
-                'Email is required '
+                'Email ou mot de passe requis.'
             );
         }
+
         $user = new Users();
         $hashedPassword = $passwordHasher->hashPassword(
             $user,
-            $password
+            trim($password)
         );
-        if($firstname){
+        if($firstname !== ""){
             $user->setFirstName(htmlspecialchars($firstname));
         }
-        if($lastname){
+        if($lastname !== ""){
             $user->setLastName(htmlspecialchars($lastname));
         }
-        if($email){
-            $user->setEmail(htmlspecialchars($email));
+        if($email !== ""){
+            $user->setEmail(htmlspecialchars(trim($email)));
         }
-        if($password && $hashedPassword){
+        if($password !== "" && $hashedPassword){
             $user->setPassword($hashedPassword);
         }
-        if($phone){
+        if($phone !== ""){
             $user->setPhone(htmlspecialchars($phone));
         }
 
@@ -60,13 +54,13 @@ class RegisterController extends AbstractController
         $entityManager->flush();
 
         return new JsonResponse([
-            'message' => 'User have been updated !',
+            'message' => 'Enregistré avec succès',
+            'status' => 200,
             '_id' => $user->getId(),
             'Lastname' => $user->getLastName(),
             'FirstName' => $user->getFirstName(),
             'Phone' => $user->getPhone(),
             'Email' => $user->getEmail(),
-            'Roles' => $user->getRoles(),
         ]);
     }
 }

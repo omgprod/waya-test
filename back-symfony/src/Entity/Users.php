@@ -18,13 +18,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id;
 
     #[ORM\Column(length: 50)]
-    #[Assert\NotBlank]
-    #[Assert\NotNull]
     private ?string $lastName;
 
     #[ORM\Column(length: 50)]
-    #[Assert\NotBlank]
-    #[Assert\NotNull]
     private ?string $firstName;
 
     #[ORM\Column(length: 50)]
@@ -47,6 +43,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type:"json")]
     #[Assert\NotNull]
     private ?array $roles = [];
+
+    public function __construct()
+    {
+        $this->username = "";
+        $this->lastName = "";
+        $this->firstName = "";
+        $this->phone = "";
+    }
 
     public function getId(): ?int
     {
