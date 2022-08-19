@@ -20,7 +20,7 @@ export class User {
 export class AuthService {
   endpoint: string = 'https://localhost:4443/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
+  currentUser: any = {};
   constructor(
     private toast: HotToastService,
     private http: HttpClient,
@@ -51,10 +51,19 @@ export class AuthService {
     let api = `${this.endpoint}/login_check`;
     return this.http.post(api, {email, password}).pipe(catchError(this.handleError));
   }
+  async isAdmin(){
+    const user: any = await this.getUser();
+    console.log(user.roles)
+    return user.roles.includes("ROLE_ADMIN")
+  }
   setUser(user:any) {
     this.currentUser = user;
     localStorage.setItem('user', JSON.stringify(user));
     return this.currentUser;
+  }
+  async getUser() {
+    const user: any = await localStorage.getItem('user')
+    return JSON.parse(user);
   }
   setToken(token:string) {
     localStorage.setItem('access_token', token);
@@ -69,19 +78,17 @@ export class AuthService {
   getUserProfile(id: any): Observable<any> {
     let api = `${this.endpoint}/users/${id}`;
     return this.http.get(api, { headers: this.headers }).pipe(
-      map((res) => {
+      map((res: any) => {
         return res || {};
       }),
       catchError(this.handleError)
     );
   }
   doLogout() {
+    this.notify("show", "Au revoir");
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');
     return this.router.navigate(['se-connecter']);
-  }
-  handleError2(error: HttpErrorResponse) {
-    console.log(error)
   }
   handleError(error: HttpErrorResponse) {
     console.log(error)

@@ -31,6 +31,8 @@ export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['actions', 'id', 'Email', 'FirstName', 'LastName', 'Phone'];
   positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
   position = new FormControl(this.positionOptions[0]);
+  currentUser = {};
+  isAdmin = false;
   users: Array<Person>;
   usersFetch: Array<Person>;
 
@@ -45,34 +47,18 @@ export class UsersComponent implements OnInit {
   paginateTable(){
     this.users = paginate(this.usersFetch, this.pageSize, this.pageNumber);
   }
-  ngOnInit(): void {
+  ngOnInit() {
     // @ts-ignore
-    this.http.get('https://localhost:4443/api/users').subscribe((data: Array<Person>) => {
+    this.http.get('https://localhost:4443/api/users').subscribe(async (data: Array<Person>) => {
+      let user: any = await this.authService.getUser();
+      this.isAdmin = await this.authService.isAdmin()
+      console.log(this.authService.isAdmin())
+      this.currentUser = user;
       this.usersFetch = data;
       this.arrayCount = data.length;
       this.users = data;
       this.users = paginate(this.users, this.pageSize, this.pageNumber);
       console.log(this.users)
-/*      data.forEach((user) =>{
-        if(user){
-          const id: string = user._id;
-          const username: string = user.Username;
-          const phone: string = user.Phone;
-          const firstName: string = user.FirstName;
-          const lastName: string = user.LastName;
-          const email: string = user.Email;
-          const roles: Array<string> = user.Roles;
-          const pers: Person = {
-            id,
-            username,
-            phone,
-            firstName,
-            lastName,
-            email,
-            roles,
-          };
-          this.users.push(pers);
-        }*/
       })
   }
 

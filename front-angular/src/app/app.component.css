@@ -3,10 +3,10 @@ img:hover {
 
 @keyframes shake {
   25% {
-    transform: rotate(25deg); }
+    transform: scale(1); }
   50% {
-    transform: rotate(-25deg); }
+    transform: scale(1.2); }
   75% {
-    transform: rotate(25deg); } }
+    transform: scale(1.4); } }
 
 /*# sourceMappingURL=app.component.css.map */
