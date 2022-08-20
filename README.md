@@ -3,8 +3,8 @@
 ### Built With
 
 * [![Angular][Angular.io]][Angular-url]
-* [![Symfony][Symfony.io]][Angular-url]
-* [![Angular][Angular.io]][Angular-url]
+* [![Symfony][Symfony.io]][Symfony-url]
+* [![Docker][docker.io]][docker-url]
 
 Author : Haggerty Brian
 
@@ -117,7 +117,7 @@ PORT FRONTEND HTTP_PORT=4200
 [Vue-url]: https://vuejs.org/
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
-[Symfony.io]: https://img.shields.io/badge/Symfony-DD0031?style=for-the-badge&logo=symfony&logoColor=white
+[Symfony.io]: https://img.shields.io/badge/Symfony-696969?style=for-the-badge&logo=symfony&logoColor=white
 [Symfony-url]: [https://symfony.com/
 [Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
 [Svelte-url]: https://svelte.dev/
@@ -125,5 +125,5 @@ PORT FRONTEND HTTP_PORT=4200
 [Laravel-url]: https://laravel.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[docker.io]: https://img.shields.io/badge/Docker-0b214a?style=for-the-badge&logo=jquery&logoColor=white
+[docker-url]: https://www.docker.com/
