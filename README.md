@@ -6,14 +6,6 @@
 * [![Symfony][Symfony.io]][Symfony-url]
 * [![Docker][docker.io]][docker-url]
 
-Author : Haggerty Brian
-
-Operating System: Parrot OS 5.0 (Electro Ara)
-
-Kernel: Linux 5.18.0-14parrot1-amd64
-
-Architecture: x86-64
-
 ## Versionning
 
 - Docker version: 20.10.5+dfsg1
@@ -95,6 +87,11 @@ PORT FRONTEND HTTP_PORT=4200
 - [x] Network
 - [x] structuration du docker-compose.yaml
 
+
+### Author : Haggerty Brian
+### Operating System: Parrot OS 5.0 (Electro Ara)
+### Kernel: Linux 5.18.0-14parrot1-amd64
+### Architecture: x86-64
 
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
