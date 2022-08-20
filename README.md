@@ -13,29 +13,30 @@ Versionning :
 
 - Docker version: 20.10.5+dfsg1
 - Docker compose version : 1.29.2
+- NodeJS v17.9.1
+- NPM v8.11.0
 
-Repo base symfony flex avec docker de Kévin Dunglas :
-https://github.com/dunglas/symfony-docker
+Repo base symfony flex avec docker :
+[Kévin Dunglas](https://github.com/dunglas/symfony-docker)
 
 PORT BACKEND HTTP_PORT=8000 HTTPS_PORT=4443
 PORT FRONTEND HTTP_PORT=4200
 
 ## Installation
-
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/omgprod/waya-test.git
    ```
-3. Install NPM packages
+2. Move to rep
    ```sh
-   npm install
+   cd ./waya-test
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Build & start
+   ```sh
+   npm run build && npm run start
    ```
 
-# COMMANDS 
+## COMMANDS 
 - npm run build       # Initialisations des images, containers, volumes
 - npm run fresh-start # Initialisations et démarrage des containers
 - npm run start":     # Démarrage des containers DAEMON,
