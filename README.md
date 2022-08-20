@@ -36,16 +36,50 @@ PORT FRONTEND HTTP_PORT=4200
    ```
 
 ## COMMANDS 
-- npm run build       # Initialisations des images, containers, volumes
-- npm run fresh-start # Initialisations et démarrage des containers
-- npm run start":     # Démarrage des containers DAEMON,
-- npm run start-logs  # Démarrage des containers + logs
-- npm run down        # Stop les containers
-- npm run stop        # Stop les containers, supprime les volumes liés 
-- npm run logs        # Logs des containers
-- npm run fixtures    # Injections d'utilisateurs
-- npm run restart     # Stop, Redémarre
-- npm run reboot      # Stop, Supprime, Redémarre, Log
+
+Toutes les commandes sont accessibles : ./waya-test/package.json
+
+Initialisations des images, containers, volumes
+   ```sh
+   npm run build
+   ```
+
+Initialisations et démarrage des containers
+   ```sh       
+   npm run start-fresh
+   ```
+Démarrage des containers + logs
+   ```sh
+   npm run start-logs
+   ```
+Démarrage des containers DAEMON
+   ```sh
+   npm run start
+   ```
+Stop les containers
+   ```sh
+   npm run down
+   ```
+Stop les containers, supprime les volumes liés 
+   ```sh
+   npm run stop
+   ```
+Logs des containers
+   ```sh
+   npm run logs
+   ```   
+Injections d'utilisateurs
+   ```sh
+   npm run fixtures
+   ```   
+Stop et Redémarre
+   ```sh
+   npm run restart
+   ```   
+Stop, Supprime, Redémarre, Log
+   ```sh
+   npm run reboot
+   ```   
 
 # Front-end 
 - [ ] Documentations
@@ -55,10 +89,10 @@ PORT FRONTEND HTTP_PORT=4200
 - [x] Mise en place Auth, Interceptors, Guard, JWT
 - [x] Récupérations de données, mise en forme TS
 - [ ] Mise en place de toutes les pages et des données
-- [ ] Login
+- [X] Login
 - [x] Register
 - [x] Logout
-- [ ] Observable
+- [X] Observable
 - [ ] Store NGRX
 - [x] Get Deep on Angular Materials Components 
 - [ ] UI & SASS
