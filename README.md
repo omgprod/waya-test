@@ -12,16 +12,17 @@
 - Docker compose version : 1.29.2
 - NodeJS v17.9.1
 - NPM v8.11.0
+- Angular CLI v14.1.3
 
-Repo base symfony flex avec docker :
+Symfony Flex Docker rep :
 [Kévin Dunglas](https://github.com/dunglas/symfony-docker)
 
-## APP PORTS
+## Ports
 
 * PORT BACKEND HTTP_PORT=8000 HTTPS_PORT=4443
 * PORT FRONTEND HTTP_PORT=4200
 
-## Installation
+## Install
 1. Clone the repo
    ```sh
    git clone https://github.com/omgprod/waya-test.git
@@ -35,7 +36,7 @@ Repo base symfony flex avec docker :
    npm run build && npm run start
    ```
 
-## COMMANDS 
+## Commands 
 
 Toutes les commandes sont accessibles : ./waya-test/package.json
 
