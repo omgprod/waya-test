@@ -1,4 +1,4 @@
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[https://example.com](https://example.com)
 
 
 Author : Haggerty Brian
@@ -19,6 +19,21 @@ https://github.com/dunglas/symfony-docker
 
 PORT BACKEND HTTP_PORT=8000 HTTPS_PORT=4443
 PORT FRONTEND HTTP_PORT=4200
+
+## Installation
+
+2. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
 
 # COMMANDS 
 - npm run build       # Initialisations des images, containers, volumes
