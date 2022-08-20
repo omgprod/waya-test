@@ -53,7 +53,6 @@ export class AuthService {
   }
   async isAdmin(){
     const user: any = await this.getUser();
-    console.log(user.roles)
     return user.roles.includes("ROLE_ADMIN")
   }
   setUser(user:any) {

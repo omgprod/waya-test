@@ -19,7 +19,6 @@
                     [routerLink]="['/utilisateur', element.id]"
                     #tooltip="matTooltip"
                     matTooltip="Voir la fiche"
-                    [matTooltipPosition]="position.value!"
                     matTooltipHideDelay="100">
               <mat-icon matSuffix>remove_red_eye</mat-icon>
             </button>
@@ -27,7 +26,6 @@
                     *ngIf="this.isAdmin"
                     #tooltip="matTooltip"
                     matTooltip="Modifier la fiche"
-                    [matTooltipPosition]="position.value!"
                     matTooltipHideDelay="100">
               <mat-icon matSuffix>edit</mat-icon>
             </button>
@@ -35,7 +33,6 @@
                     *ngIf="this.isAdmin"
                     #tooltip="matTooltip"
                     matTooltip="Supprimer la fiche"
-                    [matTooltipPosition]="position.value!"
                     matTooltipHideDelay="100">
               <mat-icon matSuffix>delete</mat-icon>
             </button>

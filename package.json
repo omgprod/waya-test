@@ -1,0 +1,28 @@
+{
+  "name": "waya-test",
+  "version": "1.0.0",
+  "description": "CRUD Symfony, Angular",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker compose -f ./back-symfony/docker-compose.yml build",
+    "fresh-start": "HTTP_PORT=8000 HTTPS_PORT=4443 docker compose -f ./back-symfony/docker-compose.yml up --build -d",
+    "start": "HTTP_PORT=8000 HTTPS_PORT=4443 docker compose -f ./back-symfony/docker-compose.yml up -d",
+    "start-logs": "HTTP_PORT=8000 HTTPS_PORT=4443 docker compose -f ./back-symfony/docker-compose.yml up",
+    "down": "docker compose -f ./back-symfony/docker-compose.yml down",
+    "stop": "docker compose -f ./back-symfony/docker-compose.yml down -v",
+    "logs": "docker compose -f ./back-symfony/docker-compose.yml logs -f",
+    "fixtures": "docker compose -f ./back-symfony/docker-compose.yml exec php bin/console hautelook:fixtures:load",
+    "restart": "npm run down && npm run start && npm run logs",
+    "reboot": "npm run stop && npm run fresh-start&& npm run logs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omgprod/waya-test.git"
+  },
+  "author": "BabaHagg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omgprod/waya-test/issues"
+  },
+  "homepage": "https://github.com/omgprod/waya-test#readme"
+}

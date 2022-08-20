@@ -104,13 +104,26 @@
       </div>
 
       <mat-card-actions align="end" style="position: absolute; bottom: 0; right: 10px">
-        <button style="margin:5px" mat-flat-button color="primary" type="submit">
+        <button style="margin:5px"
+                #tooltip="matTooltip"
+                matTooltip="Mettre à jours les informations saisies"
+                matTooltipHideDelay="100"
+                mat-flat-button color="primary" type="submit">
           <mat-icon matSuffix>edit</mat-icon>
         </button>
-        <button (click)="logout()" style="margin:5px" mat-flat-button color="primary" type="submit">
+        <button (click)="logout()" style="margin:5px"
+                #tooltip="matTooltip"
+                matTooltip="Se déconnecter"
+                matTooltipHideDelay="100"
+                mat-flat-button color="primary" type="submit">
           <mat-icon matSuffix>logout</mat-icon>
         </button>
-        <button (click)="logout()" style="margin:5px" mat-flat-button color="primary" type="submit">
+        <button (click)="logout()" style="margin:5px"
+                mat-flat-button
+                #tooltip="matTooltip"
+                matTooltip="Supprimer le compte"
+                matTooltipHideDelay="100"
+                color="primary" type="submit">
           <mat-icon matSuffix>delete</mat-icon>
         </button>
       </mat-card-actions>
