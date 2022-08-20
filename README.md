@@ -3,6 +3,8 @@
 ### Built With
 
 * [![Angular][Angular.io]][Angular-url]
+* [![Symfony][Symfony.io]][Angular-url]
+* [![Angular][Angular.io]][Angular-url]
 
 Author : Haggerty Brian
 
@@ -115,6 +117,8 @@ PORT FRONTEND HTTP_PORT=4200
 [Vue-url]: https://vuejs.org/
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
+[Symfony.io]: https://img.shields.io/badge/Symfony-DD0031?style=for-the-badge&logo=symfony&logoColor=white
+[Symfony-url]: [https://symfony.com/
 [Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
 [Svelte-url]: https://svelte.dev/
 [Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
