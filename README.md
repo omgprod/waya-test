@@ -6,30 +6,28 @@ Kernel: Linux 5.18.0-14parrot1-amd64
 
 Architecture: x86-64
 
-Docker version: 20.10.5+dfsg1
+Versionning : 
 
-Docker compose version : 1.29.2
+- Docker version: 20.10.5+dfsg1
+- Docker compose version : 1.29.2
 
 Repo base symfony flex avec docker de Kévin Dunglas :
 https://github.com/dunglas/symfony-docker
 
+PORT BACKEND HTTP_PORT=8000 HTTPS_PORT=4443
+PORT FRONTEND HTTP_PORT=4200
+
 # COMMANDS 
-
-# Build project
-- ./back-symfony
-- docker compose build --pull --no-cache
-
-# Start project with build
-- HTTP_PORT=8000 HTTPS_PORT=4443 docker compose up --build
-
-# Start project
-- HTTP_PORT=8000 HTTPS_PORT=4443 docker compose up
-
-# Start project daemon
-- HTTP_PORT=8000 HTTPS_PORT=4443 docker compose up -d
-
-# Reload fixtures
-docker compose exec php bin/console hautelook:fixtures:load
+- npm run build       # Initialisations des images, containers, volumes
+- npm run fresh-start # Initialisations et démarrage des containers
+- npm run start":     # Démarrage des containers DAEMON,
+- npm run start-logs  # Démarrage des containers + logs
+- npm run down        # Stop les containers
+- npm run stop        # Stop les containers, supprime les volumes liés 
+- npm run logs        # Logs des containers
+- npm run fixtures    # Injections d'utilisateurs
+- npm run restart     # Stop, Redémarre
+- npm run reboot      # Stop, Supprime, Redémarre, Log
 
 # Front-end 
 - [ ] Documentations
@@ -64,10 +62,9 @@ docker compose exec php bin/console hautelook:fixtures:load
 - [ ] PHPUnit
 
 # Docker 
-- [ ] Documentations
+- [x] Documentations
 - [x] Récupération de symfony/flex docker 
 - [x] Ajout front-end angular 
 - [x] Ajout pgadmin4 
 - [x] Network
 - [x] structuration du docker-compose.yaml
-- [ ] docker-compose.yaml à la racine fonctionnel
