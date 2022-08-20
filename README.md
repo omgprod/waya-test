@@ -1,5 +1,8 @@
-[https://example.com](https://example.com)
+# WAYA TEST
 
+### Built With
+
+* [![Angular][Angular.io]][Angular-url]
 
 Author : Haggerty Brian
 
@@ -9,7 +12,7 @@ Kernel: Linux 5.18.0-14parrot1-amd64
 
 Architecture: x86-64
 
-Versionning : 
+## Versionning
 
 - Docker version: 20.10.5+dfsg1
 - Docker compose version : 1.29.2
@@ -18,6 +21,8 @@ Versionning :
 
 Repo base symfony flex avec docker :
 [Kévin Dunglas](https://github.com/dunglas/symfony-docker)
+
+## APP PORTS
 
 PORT BACKEND HTTP_PORT=8000 HTTPS_PORT=4443
 PORT FRONTEND HTTP_PORT=4200
