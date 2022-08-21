@@ -1,6 +1,8 @@
-<p>user works!</p>
 <div style="position: absolute; top: 100px; left: 0">
   <button
+    #tooltip="matTooltip"
+    matTooltip="Revenir à la liste"
+    matTooltipHideDelay="100"
     mat-flat-button>
     <mat-icon matSuffix [routerLink]="['/utilisateurs']">keyboard_arrow_left</mat-icon>
   </button>
@@ -11,18 +13,52 @@
   (ngSubmit)="registerUser(user.id)"
 >
   <div style="display: flex;justify-content:center; margin-top:60px">
-    <div>
+    <div *ngIf="!isAdmin" style="margin: 20px">
+      <mat-card style="margin-top:60px; height:230px; width:300px">
+        <mat-list style="margin-top:10px">
+          <div style="display:flex; justify-content:space-between; flex-direction: row">
+            <mat-list-item>E-mail : </mat-list-item>
+            <mat-list-item class="right" style="font-weight: 500; text-align: end">
+              {{user.email}}
+            </mat-list-item>
+          </div>
+          <mat-divider></mat-divider>
+          <div style="display:flex; justify-content:space-between; flex-direction: row">
+            <mat-list-item>Nom de famille : </mat-list-item>
+            <mat-list-item class="right" style="font-weight: 500;text-align: end">
+              {{user.lastName}}
+            </mat-list-item>
+          </div>
+          <mat-divider></mat-divider>
+            <div style="display:flex; justify-content:space-between; flex-direction: row">
+              <mat-list-item>Téléphone : </mat-list-item>
+              <mat-list-item class="right" style="font-weight: 500;text-align: end">
+                {{user.phone}}
+              </mat-list-item>
+            </div>
+            <mat-divider></mat-divider>
+            <div style="display:flex; justify-content:space-between; flex-direction: row">
+              <mat-list-item>Prénom : </mat-list-item>
+              <mat-list-item class="right" style="font-weight: 500;text-align: end">
+                {{user.firstName}}
+              </mat-list-item>
+            </div>
+          </mat-list>
+      </mat-card>
+    </div>
 
+    <div *ngIf="isAdmin" style="margin: 20px">
       <mat-card style="margin-top:60px; height:200px; width:300px">
         <mat-list style="margin-top:10px">
           <mat-list-item>
             <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
-              <mat-label>Roles</mat-label>
+              <mat-label>E-mail</mat-label>
               <input
+                [disabled]="!isAdmin"
                 class="form-control"
                 formControlName="email"
-                pattern="^[a-zA-Z]*"
-                placeholder="{{user?.email}}"
+                type="email"
+                placeholder="{{user.email}}"
                 matInput
               >
               <mat-icon matSuffix>admin</mat-icon>
@@ -30,64 +66,83 @@
           </mat-list-item>
           <mat-list-item style="margin-top:10px">
             <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
-              <mat-label>Roles</mat-label>
+              <mat-label>Nom de famille</mat-label>
               <input
                 class="form-control"
                 formControlName="lastName"
                 pattern="^[a-zA-Z]*"
-                placeholder="{{user?.lastName}}"
+                placeholder="{{user.lastName}}"
                 matInput
               >
               <mat-icon matSuffix>admin</mat-icon>
             </mat-form-field>
           </mat-list-item>
-          <mat-list-item style="margin-top:10px">
-            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
-              <mat-label>Roles</mat-label>
-              <input
-                class="form-control"
-                formControlName="firstName"
-                pattern="^[a-zA-Z]*"
-                placeholder="{{user?.firstName}}"
-                matInput
-              >
-              <mat-icon matSuffix>admin</mat-icon>
-            </mat-form-field>
-          </mat-list-item>
-
-        </mat-list>
-      </mat-card>
-    </div>
-    <div>
-      <mat-card style="margin-top:60px; height:200px; width:300px">
-        <mat-list style="margin-top:10px">
-          <mat-list-item>
-            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
-              <mat-label>Roles</mat-label>
-              <input
-                class="form-control"
-                formControlName="phone"
-                pattern="^[a-zA-Z]*"
-                placeholder="{{user?.phone}}"
-                matInput
-              >
-              <mat-icon matSuffix>admin</mat-icon>
-            </mat-form-field>
-          </mat-list-item>
-          <mat-list-item style="margin-top:10px">
+          <mat-list-item *ngIf="isAdmin" style="margin-top:10px">
             <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
               <mat-label>Roles</mat-label>
               <input
                 class="form-control"
                 formControlName="roles"
                 pattern="^[a-zA-Z]*"
-                placeholder="{{user?.roles}}"
+                placeholder="{{user.roles}}"
                 matInput
               >
               <mat-icon matSuffix>admin</mat-icon>
             </mat-form-field>
           </mat-list-item>
         </mat-list>
+      </mat-card>
+    </div>
+    <div *ngIf="isAdmin" style="margin: 20px">
+      <mat-card style="margin-top:60px; height:200px; width:300px">
+        <mat-list style="margin-top:10px">
+          <mat-list-item>
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Téléphone</mat-label>
+              <input
+                class="form-control"
+                formControlName="phone"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user.phone}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item style="margin-top:10px">
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Prénom</mat-label>
+              <input
+                class="form-control"
+                formControlName="firstName"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user.firstName}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+        <div *ngIf="isAdmin" style="position:absolute;bottom: -10px; right: 10px">
+          <mat-card-actions align="end" style="position: absolute; bottom: 0; right: 10px">
+            <button style="margin:5px"
+                    #tooltip="matTooltip"
+                    matTooltip="Mettre à jours les informations saisies"
+                    matTooltipHideDelay="100"
+                    mat-flat-button color="primary" type="submit">
+              <mat-icon matSuffix>edit</mat-icon>
+            </button>
+            <button  (click)="removeUser(user.id)"
+                     style="margin:5px"
+                     mat-flat-button
+                     #tooltip="matTooltip"
+                     matTooltip="Supprimer le compte"
+                     matTooltipHideDelay="100"
+                     color="primary">
+              <mat-icon matSuffix>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </div>
       </mat-card>
     </div>
   </div>

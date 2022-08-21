@@ -6,11 +6,11 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 
 type Person = {
   id: string;
-  username: string;
-  Email: string;
-  FirstName: string;
-  Lastname: string;
-  Phone: string;
+  password: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
   roles: Array<string>;
 }
 @Component({
@@ -23,10 +23,11 @@ export class UserComponent implements OnInit {
   editUser: FormGroup;
   currentUser = {};
   isAdmin = false;
-  user:any = {};
+  user:Person;
   constructor(
     public userForm: FormBuilder,
     public route:ActivatedRoute,
+    public router: Router,
     private authService: AuthService,
     public userService:UserService,
   ) {
@@ -39,36 +40,74 @@ export class UserComponent implements OnInit {
       password: [''],
       roles: [''],
     });
+    this.user = this.initUser();
+  }
+  initUser(){
+    return {
+      id: "",
+      username: "",
+      password: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      roles: [""],
+    }
   }
   registerUser(id: string) {
-    console.log("click")
-    this.userService.getUser(id).subscribe({
+    Object.keys(this.editUser.value).forEach(key => {
+      if(!this.editUser.value[key] || this.editUser.value[key] === ""){
+        delete this.editUser.value[key];
+      }
+    });
+    this.userService.updateUser(id, this.editUser.value).subscribe({
       next: (res: any) => {
-        console.log(res)
-        if (res.status === 200) {
-          this.authService.notify("success", res.message)
+        if (res.id) {
+          this.fetchInfo(res.id);
+          this.authService.notify("success", "Utilisateur modifié");
+          return this.router.navigate(['utilisateurs']);
         }
+        return this.authService.notify("error", "Une erreur est survenue");
       },
       error: () => {
         this.authService.notify("error", "Une erreur est survenue")
       }
-    });
+    })
   }
   async ngOnInit() {
     this.currentUser = await this.authService.getUser();
-    this.isAdmin = await this.authService.isAdmin()
+    this.isAdmin = await this.authService.isAdmin();
     const id = this.route.snapshot.paramMap.get('id');
     if(!id){
       // navigate to list
     }
-    this.fetchUser(this.route.snapshot.paramMap.get('id'))
+    this.fetchInfo(this.route.snapshot.paramMap.get('id'))
   }
 
-  fetchUser(id: any){
-    this.userService.getUser(id).subscribe(async (data: any) => {
-      this.user = data;
-      console.log(data)
+  removeUser(id: any){
+    this.userService.deleteUser(id).subscribe(res => {
+      if(res.status === 200){
+        this.authService.notify("success", "utilisateur supprimé");
+        return this.router.navigate(['utilisateurs']);
+      } else {
+        return this.authService.notify("success", "une erreur est survenue");
+      }
     })
+  }
+  fetchInfo(id: any){
+    this.authService.getUserProfile(id).subscribe(res => {
+      if(res !== undefined){
+        let roleArr = res.Roles;
+        roleArr = roleArr.join(' ')
+        const id: string = res._id;
+        const phone: string = res.Phone;
+        const firstName: string = res.FirstName;
+        const lastName: string = res.Lastname;
+        const email: string = res.Email;
+        const roles: string[] = roleArr;
+        this.user = { id, password: '', phone, firstName, lastName, email, roles,};
+      }
+    });
   }
 
 }

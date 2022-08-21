@@ -73,21 +73,19 @@ export class AccountComponent implements OnInit {
     return this.edit[path];
   }
   userHaveChanged(){
-    console.log(_.isEqual(this.currentUser, this.originalUser))
     this.haveChanged = _.isEqual(this.currentUser, this.originalUser);
     return;
   }
   registerUser(id: string) {
-    const user = this.editUser.value;
-    Object.keys(user).forEach(key => {
-      if(!user[key] || user[key] === ""){
-        delete user[key];
+    Object.keys(this.editUser.value).forEach(key => {
+      if(!this.editUser.value[key] || this.editUser.value[key] === ""){
+        delete this.editUser.value[key];
       }
     });
-    this.usersService.updateUser(id, user).subscribe({
+    this.usersService.updateUser(id, this.editUser.value).subscribe({
       next: (res: any) => {
-        console.log(res)
         if (res.status === 200) {
+          this.fetchInfo(this.currentUser.id);
           this.authService.notify("success", res.message)
         }
       },
@@ -95,28 +93,13 @@ export class AccountComponent implements OnInit {
         this.authService.notify("error", "Une erreur est survenue")
       }
     })
-    console.log(user)
-    /*this.usersService.getUser(id).subscribe({
-      next: (res: any) => {
-        console.log(res)
-        if (res.status === 200) {
-          this.authService.notify("success", res.message)
-        }
-      },
-      error: () => {
-        this.authService.notify("error", "Une erreur est survenue")
-      }
-    });*/
   }
 
   logout() {
     this.authService.doLogout();
   }
-
-  async ngOnInit(): Promise<void> {
-    let user: any = await localStorage.getItem('user');
-    user = JSON.parse(user);
-    this.authService.getUserProfile(user.id).subscribe(res => {
+  fetchInfo(id: any){
+    this.authService.getUserProfile(id).subscribe(res => {
       if(res !== undefined){
         let roleArr = res.Roles;
         roleArr = roleArr.join(' ')
@@ -129,8 +112,24 @@ export class AccountComponent implements OnInit {
         this.isAdmin = roles.includes("ROLE_ADMIN")
         this.originalUser = { id, password: '', phone, firstName, lastName, email, roles,};
         this.currentUser= { id, password: '', phone, firstName, lastName, email, roles,};
+        this.authService.setUser(this.originalUser)
       }
     });
   }
+  removeUser(id: any){
+    this.usersService.deleteUser(id).subscribe(res => {
+      if(res.status === 200){
+        this.authService.notify("success", "utilisateur supprimé");
+        this.logout();
+      } else {
+        this.authService.notify("success", "une erreur est survenue");
+      }
+    })
+  }
 
+  async ngOnInit(): Promise<void> {
+    let user: any = await localStorage.getItem('user');
+    user = JSON.parse(user);
+    this.fetchInfo(user.id);
+  }
 }

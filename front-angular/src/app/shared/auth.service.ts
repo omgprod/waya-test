@@ -43,6 +43,17 @@ export class AuthService {
         return this.toast.show(message);
     }
   }
+  initUser(){
+    return {
+      id : "",
+      password : "",
+      phone : "",
+      firstName : "",
+      lastName : "",
+      email : "",
+      roles: "",
+    }
+  }
   signUp(user: User): Observable<any> {
     let api = `${this.endpoint}/register`;
     return this.http.post(api, user).pipe(catchError(this.handleError));
