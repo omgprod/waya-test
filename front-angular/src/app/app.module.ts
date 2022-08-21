@@ -24,6 +24,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     UserComponent
   ],
   imports: [
+    MatSidenavModule,
+    MatListModule,
     MatPaginatorModule,
     MatSlideToggleModule,
     MatTooltipModule,
@@ -54,7 +60,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     BrowserAnimationsModule,
 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [
     {

@@ -94,12 +94,15 @@ export class AuthService {
     let msg: string = '';
     if (error.error) {
       if(error.error.status){
+        console.log("here1")
         msg = `Error Code: ${error.error.status}\nMessage: ${error.error.detail}`;
       } else {
+        console.log("here2")
         msg = `Error Code: ${error.error.code}\nMessage: ${error.error.message}`;
       }
     }
     else {
+      console.log("here3")
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);

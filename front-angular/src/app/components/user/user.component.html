@@ -4,3 +4,90 @@
     <mat-icon matSuffix [routerLink]="['/utilisateurs']">keyboard_arrow_left</mat-icon>
   </button>
 </div>
+<form
+  class="form-signin"
+  [formGroup]="editUser"
+  (ngSubmit)="registerUser(user.id)"
+>
+  <div style="display: flex;justify-content:center; margin-top:60px">
+    <div>
+
+      <mat-card style="margin-top:60px; height:200px; width:300px">
+        <mat-list style="margin-top:10px">
+          <mat-list-item>
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Roles</mat-label>
+              <input
+                class="form-control"
+                formControlName="email"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user?.email}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item style="margin-top:10px">
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Roles</mat-label>
+              <input
+                class="form-control"
+                formControlName="lastName"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user?.lastName}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item style="margin-top:10px">
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Roles</mat-label>
+              <input
+                class="form-control"
+                formControlName="firstName"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user?.firstName}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+
+        </mat-list>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card style="margin-top:60px; height:200px; width:300px">
+        <mat-list style="margin-top:10px">
+          <mat-list-item>
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Roles</mat-label>
+              <input
+                class="form-control"
+                formControlName="phone"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user?.phone}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item style="margin-top:10px">
+            <mat-form-field class="example-full-width" appearance="fill" style="margin:15px">
+              <mat-label>Roles</mat-label>
+              <input
+                class="form-control"
+                formControlName="roles"
+                pattern="^[a-zA-Z]*"
+                placeholder="{{user?.roles}}"
+                matInput
+              >
+              <mat-icon matSuffix>admin</mat-icon>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+  </div>
+</form>

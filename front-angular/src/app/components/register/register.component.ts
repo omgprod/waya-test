@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit {
   ) {
 
     this.signupForm = this.userForm.group({
-      username: [''],
       firstName: [''],
       lastName: [''],
       email: [''],

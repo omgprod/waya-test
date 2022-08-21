@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../shared/auth.service";
@@ -14,7 +14,7 @@ type Person = {
   username: string;
   Email: string;
   FirstName: string;
-  LastName: string;
+  Lastname: string;
   Phone: string;
   roles: Array<string>;
 }
@@ -25,9 +25,11 @@ type Person = {
 })
 
 export class UsersComponent implements OnInit {
-  pageSize = 10;
+  @Input() search: string = '';
   pageNumber = 1;
-  arrayCount = 1;
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   displayedColumns: string[] = ['actions', 'id', 'Email', 'FirstName', 'LastName', 'Phone'];
   positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
   position = new FormControl(this.positionOptions[0]);
@@ -35,31 +37,56 @@ export class UsersComponent implements OnInit {
   isAdmin = false;
   users: Array<Person>;
   usersFetch: Array<Person>;
-
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    // changes.prop contains the old and the new value...
+  }
   constructor(
     public router:Router,
     private http:HttpClient,
     public authService: AuthService,
-    private service:UserService) {
+    public userService: UserService) {
     this.users = [];
     this.usersFetch = [];
+  }
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    if (setPageSizeOptionsInput) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    }
   }
   paginateTable(){
     this.users = paginate(this.usersFetch, this.pageSize, this.pageNumber);
   }
-  ngOnInit() {
-    // @ts-ignore
-    this.http.get('https://localhost:4443/api/users').subscribe(async (data: Array<Person>) => {
-      let user: any = await this.authService.getUser();
-      this.isAdmin = await this.authService.isAdmin()
-      console.log(this.authService.isAdmin())
-      this.currentUser = user;
-      this.usersFetch = data;
-      this.arrayCount = data.length;
-      this.users = data;
-      this.users = paginate(this.users, this.pageSize, this.pageNumber);
-      console.log(this.users)
-      })
+  handlePageEvent(event: any){
+    this.pageNumber = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    return this.paginateTable();
   }
-
+  async searchFilter(data: any){
+    console.log(data)
+    if(!data.target.value || data.target.value === ""){
+      await this.fetchUsers();
+    }
+    this.users = this.users.filter(item => {
+      return item.Email.toLowerCase().includes(data.target.value.toLowerCase());
+    });
+  }
+  removeUser(id: any){
+    this.userService.deleteUser(id).subscribe(res => {
+      console.log(res)
+      this.fetchUsers();
+    })
+  }
+  fetchUsers(){
+    this.userService.getUsers().subscribe(async (data: Array<Person>) => {
+      this.usersFetch = data;
+      this.users = data;
+      return this.paginateTable();
+    })
+  }
+  async ngOnInit() {
+    this.currentUser = await this.authService.getUser();
+    this.isAdmin = await this.authService.isAdmin();
+    return this.fetchUsers();
+  }
 }
