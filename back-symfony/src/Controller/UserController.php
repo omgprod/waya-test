@@ -118,7 +118,6 @@ class UserController extends AbstractController
     #[Route('/users', name: 'user_create', methods: 'POST')]
     public function create(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $doctrine ,Request $request): JsonResponse
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $entityManager = $doctrine->getManager();
         $firstname = (string)$request->request->get('firstName');
         $lastname = (string)$request->request->get('lastName');
@@ -175,7 +174,7 @@ class UserController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $entityManager = $doctrine->getManager();
         $user = $entityManager->getRepository(Users::class)->find($id);
-
+        dump($user);
         if (!$user) {
             throw $this->createNotFoundException(
                 'No product found for id '.$id

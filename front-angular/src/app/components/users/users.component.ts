@@ -74,6 +74,11 @@ export class UsersComponent implements OnInit {
   removeUser(id: any){
     this.userService.deleteUser(id).subscribe(res => {
       console.log(res)
+      if(res.status === 200){
+        this.authService.notify("success", "utilisateur supprimé");
+      } else {
+        this.authService.notify("success", "une erreur est survenue");
+      }
       this.fetchUsers();
     })
   }

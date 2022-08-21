@@ -4,7 +4,14 @@
       <form class="example-form" style="display:flex; flex-direction: row; width: 100%;justify-content:space-around;">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Rechercher un e-mail</mat-label>
-          <input matInput placeholder="...@gmail.com" [value]="search" (change)="searchFilter($event)">
+          <input
+            #tooltip="matTooltip"
+            matTooltip="Faire une recherche dans le tableau"
+            matTooltipHideDelay="100"
+            matInput
+            placeholder="...@gmail.com"
+            [value]="search"
+            (change)="searchFilter($event)">
         </mat-form-field>
       </form>
 

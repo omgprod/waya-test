@@ -27,7 +27,7 @@ export class UserService {
     return this.http.delete(`${this.url}/${id}`).pipe(catchError(this.handleError));
   }
   updateUser(id: String, body: Object): Observable<any> {
-    return this.http.patch(`${this.url}/${id}`, body).pipe(catchError(this.handleError));
+    return this.http.put(`${this.url}/${id}`, body).pipe(catchError(this.handleError));
   }
   postUser(id: String, body: Object): Observable<any> {
     return this.http.post(`${this.url}/${id}`, body).pipe(catchError(this.handleError));
