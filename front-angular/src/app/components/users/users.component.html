@@ -1,6 +1,14 @@
 <div style="margin-top:100px; display: flex; justify-content:center;">
   <div style="display:flex; flex-direction: column; width: 100%;justify-content:space-around;">
     <div style="display:flex; flex-direction: row; width: 100%;justify-content:space-between;">
+      <button
+              *ngIf="isAdmin"
+              mat-flat-button
+              #tooltip="matTooltip"
+              matTooltip="Créer un utilisateur"
+              matTooltipHideDelay="100">
+        <mat-icon matSuffix>{{isAdmin ? 'add' : 'remove_red_eye'}}</mat-icon>
+      </button>
       <form class="example-form" style="display:flex; flex-direction: row; width: 100%;justify-content:space-around;">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Rechercher un e-mail</mat-label>
