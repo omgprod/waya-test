@@ -2,7 +2,7 @@ when@dev: &dev
     hautelook_alice:
         fixtures_path: fixtures
         root_dirs:
-            - '%kernel.root_dir%'
+            #- '%kernel.root_dir%'
             - '%kernel.project_dir%'
 #when@dev: &dev
 #when@test: *dev

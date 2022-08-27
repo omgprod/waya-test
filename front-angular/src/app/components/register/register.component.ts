@@ -35,9 +35,11 @@ export class RegisterComponent implements OnInit {
           this.authService.notify("success", res.message)
           this.signupForm.reset();
           this.router.navigate(['se-connecter']);
+        } else {
+          this.authService.notify("error", res.message)
         }
     },
-    error: () => {
+    error: (res) => {
         this.authService.notify("error", "Une erreur est survenue")
       }
     });

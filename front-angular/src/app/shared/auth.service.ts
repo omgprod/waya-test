@@ -18,7 +18,7 @@ export class User {
   providedIn: 'root'
 })
 export class AuthService {
-  endpoint: string = 'https://localhost:4443/api';
+  endpoint: string = 'https://localhost/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser: any = {};
   constructor(
@@ -101,19 +101,15 @@ export class AuthService {
     return this.router.navigate(['se-connecter']);
   }
   handleError(error: HttpErrorResponse) {
-    console.log(error)
     let msg: string = '';
     if (error.error) {
       if(error.error.status){
-        console.log("here1")
         msg = `Error Code: ${error.error.status}\nMessage: ${error.error.detail}`;
       } else {
-        console.log("here2")
-        msg = `Error Code: ${error.error.code}\nMessage: ${error.error.message}`;
+        msg = `Error Code: ${error.error?.code}\nMessage: ${error.error?.message}`;
       }
     }
     else {
-      console.log("here3")
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);

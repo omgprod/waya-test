@@ -9,7 +9,7 @@ import {AuthService} from "../shared/auth.service";
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'https://localhost:4443/api/users';
+  private url = 'https://localhost/api/users';
   constructor(
     private toast: HotToastService,
     private http: HttpClient,

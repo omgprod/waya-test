@@ -42,8 +42,11 @@ class UserController extends AbstractController
         return new JsonResponse($arrayCollection);
     }
 
-    #[Route('/user-create', name: 'create_user')]
-    public function generateAdminUser(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $doctrine, ValidatorInterface $validator): JsonResponse
+    #[Route('/user-create', name: 'create_user', methods: 'GET')]
+    public function generateAdminUser(
+        UserPasswordHasherInterface $passwordHasher,
+        ManagerRegistry $doctrine,
+        ValidatorInterface $validator): JsonResponse
     {
         $entityManager = $doctrine->getManager();
 
@@ -68,8 +71,8 @@ class UserController extends AbstractController
                 "status" => 404,
             ]);
         }
-        for ($i = 0; $i < 14; $i++) {
-            $userRand = $this->generateRandomUsers($passwordHasher);
+        for ($i = 0; $i < 10; $i++) {
+            $userRand = $this->generateRandomUsers($passwordHasher, $doctrine, $validator);
             $entityManager->persist($userRand);
             $entityManager->flush();
         }
@@ -89,28 +92,46 @@ class UserController extends AbstractController
         ]);
     }
 
-    private function generateRandomUsers(UserPasswordHasherInterface $passwordHasher): Users
+    private function generateRandomUsers(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $doctrine,ValidatorInterface $validator): Users | JsonResponse
     {
-        $names = ["jean", "richard", "paul", "john"];
-        $lastnames = ["dupont", "doe", "henry", "carter"];
-        $mail = ["@gmail.com", "@live.com", "@mailjet.com"];
+        $entityManager = $doctrine->getManager();
+        $names = ["jean", "richard", "paul", "john", "anne", "lea", "marie", "lucia"];
+        $lastnames = ["dupont", "doe", "henry", "carter", "stein", "nguyen"];
+        $mail = ["@gmail.com", "@live.com", "@mailjet.com", "@orange.com", "@free.com", "@msfr.com"];
         $role = ["ROLE_USER", "ROLE_ADMIN"];
         $phone = "06" . random_int(10000000, 99999999);
         $user = new Users();
-        $hashedPassword = $passwordHasher->hashPassword(
-            $user,
-            "password"
-        );
-        $name = $names[array_rand($names)];
-        $lastname = $lastnames[array_rand($lastnames)];
-        $email = $names[array_rand($names)] . $mail[array_rand($mail)];
-        $roles = $role[array_rand($role)];
+
+        while(1){
+            $name = $names[array_rand($names)];
+            $lastname = $lastnames[array_rand($lastnames)];
+            $roles = $role[array_rand($role)];
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                "password"
+            );
+            $email = $names[array_rand($names)] . $mail[array_rand($mail)];
+            $alreadyIn = $entityManager->getRepository(Users::class)->findBy(["email" => $email]);
+            if(!$alreadyIn){
+                break;
+            }
+        }
+
         $user->setFirstName($name);
         $user->setLastName($lastname);
         $user->setPassword($hashedPassword);
         $user->setEmail($email);
         $user->setPhone($phone);
         $user->setRoles([$roles]);
+
+        $errors = $validator->validate($user);
+        if (count($errors) > 0) {
+            return new JsonResponse([
+                "type" => "Erreur",
+                "message" => $errors,
+                "status" => 400,
+            ]);
+        }
         return $user;
     }
 
@@ -143,7 +164,7 @@ class UserController extends AbstractController
     #[Route('/users', name: 'user_create', methods: 'POST')]
     public function create(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $doctrine ,Request $request): JsonResponse
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $entityManager = $doctrine->getManager();
         $firstname = (string)$request->request->get('firstName');
         $lastname = (string)$request->request->get('lastName');

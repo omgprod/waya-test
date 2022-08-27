@@ -32,8 +32,7 @@ export class LoginComponent implements OnInit {
         this.authService.notify("success", "Vous êtes connecté " + res.user.email)
         this.router.navigate(['mon-compte']);
       },
-      error: (err: any) => {
-        console.log(err)
+      error: () => {
         this.authService.notify("error", "Mauvais identifiants")
       }
     });

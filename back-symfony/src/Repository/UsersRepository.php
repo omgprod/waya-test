@@ -33,6 +33,9 @@ class UsersRepository extends ServiceEntityRepository implements UserLoaderInter
         }
     }
 
+    /**
+     * @throws NonUniqueResultException
+     */
     public function loadUserByUsername(string $username): UserInterface
     {
         return $this->loadUserByIdentifier($username);
@@ -51,6 +54,7 @@ class UsersRepository extends ServiceEntityRepository implements UserLoaderInter
                 WHERE u.email = :query'
         )
             ->setParameter('query', $identifier)
+            ->setMaxResults(1)
             ->getOneOrNullResult();
     }
 

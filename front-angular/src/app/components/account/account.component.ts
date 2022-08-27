@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../shared/auth.service';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import 'lodash';
 declare var _:any;
@@ -48,10 +48,9 @@ export class AccountComponent implements OnInit {
     this.originalUser = this.initUser();
     this.currentUser = this.initUser();
     this.editUser = this.userForm.group({
-      username: [''],
       firstName: [''],
       lastName: [''],
-      email: [''],
+      email: new FormControl(this.currentUser.email, Validators.required),
       phone: [''],
       password: [''],
       roles: [''],
@@ -78,6 +77,12 @@ export class AccountComponent implements OnInit {
   }
   registerUser(id: string) {
     Object.keys(this.editUser.value).forEach(key => {
+      console.log(key,this.editUser.value[key] )
+      if(key === "roles"){
+        if(this.editUser.value[key] !== ""){
+          this.editUser.value[key] = [this.editUser.value[key]]
+        }
+      }
       if(!this.editUser.value[key] || this.editUser.value[key] === ""){
         delete this.editUser.value[key];
       }

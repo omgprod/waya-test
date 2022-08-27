@@ -12,6 +12,8 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
     #App\Faker\Provider\AppFixtures: ~
+    App\DataFixtures\AppFixtures:
+        tags: [ { name: nelmio_alice.faker.provider } ]
 
     app.listener.authentication_success_response:
         class: App\EventListener\AuthenticationSuccessListener
