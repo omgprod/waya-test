@@ -4,8 +4,8 @@
   "description": "CRUD Symfony, Angular",
   "main": "index.js",
   "scripts": {
-    "build": "docker compose -f ./back-symfony/docker-compose.yml build",
-    "fresh-start": "docker compose -f ./back-symfony/docker-compose.yml up --build",
+    "build": "docker compose -f ./back-symfony/docker-compose.yml build --pull --no-cache",
+    "start-logs": "docker compose -f ./back-symfony/docker-compose.yml up",
     "start": "docker compose -f ./back-symfony/docker-compose.yml up",
     "start-logs": "docker compose -f ./back-symfony/docker-compose.yml up",
     "down": "docker compose -f ./back-symfony/docker-compose.yml down",

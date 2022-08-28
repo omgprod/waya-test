@@ -91,18 +91,12 @@
                 <mat-icon matSuffix>phone</mat-icon>
               </mat-form-field>
             </div>
-            <div style="display:flex;justify-content:center">
-              <mat-form-field class="example-full-width" appearance="fill">
+            <div *ngIf="isAdmin" style="display:flex;justify-content:center">
+              <mat-form-field class="example-full-width" appearance="fill" style="width:215px">
                 <mat-label>Roles</mat-label>
-                <input
-                  class="form-control"
-                  formControlName="roles"
-                  pattern="^[a-zA-Z]*"
-                  placeholder="{{currentUser.roles}}"
-                  (focusout)="userHaveChanged()"
-                  matInput
-                >
-                <mat-icon matSuffix>admin</mat-icon>
+                  <mat-select [formControl]="roles"  formControlName="roles" multiple style="width:200px">
+                    <mat-option *ngFor="let role of rolesList" [value]="role">{{role}}</mat-option>
+                  </mat-select>
               </mat-form-field>
             </div>
           </div>

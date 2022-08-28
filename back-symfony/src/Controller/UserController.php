@@ -17,6 +17,7 @@ class UserController extends AbstractController
     #[Route('/users', name: 'list_user', methods: 'GET')]
     public function index(ManagerRegistry $doctrine): JsonResponse
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $users = $doctrine->getRepository(Users::class)->findAll();
 
         if (!$users) {
@@ -249,14 +250,36 @@ class UserController extends AbstractController
                     $user->setLastName(htmlspecialchars($value));
                 }
                 if($key === "email"){
-                    $user->setEmail(htmlspecialchars($value));
+                    $userInDB = $entityManager->getRepository(Users::class)->findOneBy(["email" => $value]);
+                    if($value === $user->getEmail()){
+                        $user->setEmail(htmlspecialchars($value));
+                    } else {
+                        if($userInDB){
+                            return new JsonResponse([
+                                "type" => "Erreur",
+                                "message" => "E-mail déjà enregistré",
+                                "status" => 400,
+                            ]);
+                        }
+                    }
                 }
                 if($key === "phone"){
                     $user->setPhone(htmlspecialchars($value));
                 }
                 if($key === "roles"){
-                    if($value === "ROLE_USER" || $value === "ROLE_ADMIN")
-                        $user->setRoles(htmlspecialchars($value));
+                    $this->denyAccessUnlessGranted('ROLE_ADMIN');
+                    if(in_array("ROLE_USER", $value) || in_array("ROLE_ADMIN", $value))
+                        if(count($value) <= 2
+                            && $value[0] === "ROLE_USER" || $value[0] === "ROLE_ADMIN"
+                            || $value[1] === "ROLE_USER" || $value[1] === "ROLE_ADMIN"){
+                            if(count($value) == 1 && $value[0]){
+                                $value[0] = htmlspecialchars($value[0]);
+                            }
+                            if(count($value) == 2 && $value[1]){
+                                $value[1] = htmlspecialchars($value[1]);
+                            }
+                            $user->setRoles($value);
+                        }
                 }
             }
             $entityManager->flush();
@@ -275,7 +298,7 @@ class UserController extends AbstractController
     #[Route('/users/{id}', name: 'user_show', methods: 'DELETE')]
     public function remove(ManagerRegistry $doctrine, int $id): JsonResponse
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $entityManager = $doctrine->getManager();
         $user = $doctrine->getRepository(Users::class)->find($id);
 

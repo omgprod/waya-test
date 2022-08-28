@@ -13,7 +13,7 @@ type Person = {
     firstName: string;
     lastName: string;
     phone: string;
-    roles: string;
+    roles: string[];
 }
 @Component({
   selector: 'app-account',
@@ -21,9 +21,11 @@ type Person = {
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+  rolesList: string[] = ['ROLE_USER', 'ROLE_ADMIN'];
   editUser: FormGroup;
   currentUser: Person;
   originalUser: Person;
+  roles = new FormControl([]);
   edit: any = {
     email: false,
     password: false,
@@ -64,7 +66,7 @@ export class AccountComponent implements OnInit {
       firstName : "",
       lastName : "",
       email : "",
-      roles: "",
+      roles: [""],
     }
   }
   setEdit(path: any){
@@ -78,11 +80,6 @@ export class AccountComponent implements OnInit {
   registerUser(id: string) {
     Object.keys(this.editUser.value).forEach(key => {
       console.log(key,this.editUser.value[key] )
-      if(key === "roles"){
-        if(this.editUser.value[key] !== ""){
-          this.editUser.value[key] = [this.editUser.value[key]]
-        }
-      }
       if(!this.editUser.value[key] || this.editUser.value[key] === ""){
         delete this.editUser.value[key];
       }
@@ -113,7 +110,7 @@ export class AccountComponent implements OnInit {
         const firstName: string = res.FirstName;
         const lastName: string = res.Lastname;
         const email: string = res.Email;
-        const roles: string = roleArr;
+        const roles: string[] = roleArr;
         this.isAdmin = roles.includes("ROLE_ADMIN")
         this.originalUser = { id, password: '', phone, firstName, lastName, email, roles,};
         this.currentUser= { id, password: '', phone, firstName, lastName, email, roles,};

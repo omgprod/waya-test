@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../shared/auth.service";
 import {UserService} from "../../services/user.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 type Person = {
   id: string;
@@ -20,6 +20,8 @@ type Person = {
 })
 
 export class UserComponent implements OnInit {
+  roles = new FormControl('');
+  rolesList: string[] = ['ROLE_USER', 'ROLE_ADMIN'];
   editUser: FormGroup;
   currentUser = {};
   isAdmin = false;
