@@ -71,15 +71,15 @@ services:
       - ../front-angular/:/home/node/app
       - node_modules:/home/node/app/node_modules
   
-  pgadmin:
-    container_name: pgadmin4_container
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:5050"
+#  pgadmin:
+#    container_name: pgadmin4_container
+#    image: dpage/pgadmin4
+#    restart: always
+#    environment:
+#     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: root
+#    ports:
+#      - "5050:5050"
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
